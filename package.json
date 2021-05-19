@@ -1,0 +1,30 @@
+{
+  "name": "group34-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FacuEM/group34-backEnd.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FacuEM/group34-backEnd/issues"
+  },
+  "homepage": "https://github.com/FacuEM/group34-backEnd#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "http": "0.0.1-security",
+    "morgan": "^1.10.0",
+    "sequelize": "^6.6.2",
+    "sqlite3": "^5.0.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}
