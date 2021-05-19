@@ -1,11 +1,12 @@
-const Post = require("../models/");
+const { Post, Category } = require("../models/");
 
 const postController = {
   //
   fetchPosts(req, res) {
     Post.findAll({
-      attributes: ["title", "image", "category", "createdAt"],
+      attributes: ["title", "image", "createdAt"],
       order: [["createdAt", "DESC"]],
+      include: { model: Category, attributes: ["title"] },
     })
       .then((posts) => res.json(posts))
       .catch((err) => res.status(401).send(err.message));
@@ -13,7 +14,7 @@ const postController = {
   //
   fetchPostById(req, res) {
     const { id } = req.params;
-    Post.findByPk(id)
+    Post.findByPk(id, { include: { model: Category, attributes: ["title"] } })
       .then((post) => res.json(post))
       .catch((err) => res.status(401).send(err.message));
   },

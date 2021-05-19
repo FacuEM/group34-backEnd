@@ -1,16 +1,18 @@
 const express = require("express");
-const postController = require("../controllers/");
+const postController = require("../controllers/postController");
+const categoryController = require("../controllers/categoryController");
 const router = express.Router();
 
-// fetch movies
+// Category //
+router.get("/category", categoryController.fetchCategories);
+router.post("/category", categoryController.createCategory);
+router.delete("/category/:id", categoryController.deleteCategory);
+
+// Post //
 router.get("/posts", postController.fetchPosts);
-// add movie
 router.get("/posts/:id", postController.fetchPostById);
-// edit movie
 router.post("/posts", postController.createPost);
-// remove movie
 router.patch("/posts/:id", postController.editPost);
-// fetch movie
 router.delete("/posts/:id", postController.deletePost);
 
 module.exports = router;

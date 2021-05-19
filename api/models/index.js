@@ -1,29 +1,7 @@
-const { DataTypes, Model } = require("sequelize");
-const db = require("../db");
+const Post = require("./Post");
+const Category = require("./Category");
 
-class Post extends Model {}
+Category.belongsToMany(Post, { through: "CategoryPost" });
+Post.belongsToMany(Category, { through: "CategoryPost" });
 
-Post.init(
-  {
-    title: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    body: {
-      type: DataTypes.TEXT,
-      allowNull: false,
-    },
-    image: {
-      type: DataTypes.STRING,
-    },
-    category: {
-      type: DataTypes.STRING,
-    },
-  },
-  {
-    sequelize: db,
-    modelName: "Post",
-  }
-);
-
-module.exports = Post;
+module.exports = { Post, Category };
